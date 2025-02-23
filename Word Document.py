@@ -9,14 +9,12 @@ def func():
             break
         except ValueError:
             print("Некорректный ввод. Введите целое неотрицательное число.")
-    
-    for _ in range(n1):
+    for i in range(n1):
         while True:  
             bn = input("Введите двоичное число: ")
             if not bn:  
                 print("Ввод не может быть пустым.Введите двоичное число.")
                 continue
-
             a = True
             b = bn.startswith('-')
             if b:
@@ -36,10 +34,9 @@ def func():
                     a = False
                     print("Некорректный ввод. Введите двоичное число.")
                     break  
-           
             for i in fp:
                 if i not in ('0', '1'):
-                    is_valid = False
+                    a = False
                     print("Некорректный ввод. Введите двоичное число.")
                     break  
             if a:
@@ -49,13 +46,9 @@ def func():
                 else:
                     set01.add(bn)
                     dn = int(ip, 2) + int(fp or '0', 2) / (2 ** len(fp))
-
                 set10.add(dn) 
                 break  
-
     return set10, set01  
-
 set10, set01 = func()
-
 print("Множество двоичных чисел:", set01)
 print("Множество десятичных чисел:", set10)
